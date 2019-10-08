@@ -39,8 +39,24 @@ PS1="$BG_BLACK[$C_BLUE\u$C_NO$BG_BLACK:$C_GREEN\w$PROMPT_GIT$BG_BLACK]$C_GREEN\$
 complete -c man which
 complete -cf sudo
 
-GIT_COMPLETIONS=/usr/share/bash-completion/completions/git
-[[ -f "$GIT_COMPLETIONS" ]] && source "$GIT_COMPLETIONS"
+completions=(
+"/usr/share/bash-completion/completions/git"
+"/usr/share/bash-completion/completions/docker"
+"/usr/share/bash-completion/completions/docker-compose"
+"/usr/share/bash-completion/completions/fdisk"
+"/usr/share/bash-completion/completions/mount"
+"/usr/share/bash-completion/completions/pacman"
+"/usr/share/bash-completion/completions/su"
+"/usr/share/bash-completion/completions/systemctl"
+"/usr/share/bash-completion/completions/umount"
+"/usr/share/bash-completion/completions/winetricks"
+"/usr/share/bash-completion/completions/yay"
+)
+
+for completion_file in "${completions[@]}"; 
+do 
+	[[ -f "$completion_file" ]] && source "$completion_file"
+done
 
 
 #############
